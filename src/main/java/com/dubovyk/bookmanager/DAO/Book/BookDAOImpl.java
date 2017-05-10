@@ -27,7 +27,7 @@ public class BookDAOImpl extends GenericDAOImpl<Book, Long> implements BookDAO {
 
     /**
      * @param name A string name of the book to be found
-     * @return If found non 0 results returns a list with them, else empty List<Book> is returned.
+     * @return If found non 0 results returns a list with them, else empty List of Book items is returned.
      */
     @Override
     public List<Book> getAllBooksByName(final String name) {

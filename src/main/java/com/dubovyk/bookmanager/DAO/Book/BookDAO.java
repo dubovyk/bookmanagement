@@ -17,7 +17,7 @@ import java.util.List;
 public interface BookDAO extends GenericDAO<Book, Long> {
     /**
      * @param name A string name of the book to be found
-     * @return If found non 0 results returns a list with them, else empty List<Book> is returned.
+     * @return If found non 0 results returns a list with them, else empty List of Book items is returned.
      */
     List<Book> getAllBooksByName(final String name);
 }

@@ -1,5 +1,6 @@
 package com.dubovyk.bookmanager.DAO;
 
+import javax.transaction.Transactional;
 import java.io.Serializable;
 import java.util.List;
 

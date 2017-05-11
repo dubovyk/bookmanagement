@@ -21,7 +21,7 @@ public class EditCommandProcessor extends CommandProcessorImp {
     }
 
     @Override
-    public void process(String inputCommand){
+    public void handleMessage(String inputCommand){
         List<String> parts = splitArgs(inputCommand);
         if (parts.size() == 1){
             System.out.println(badFormat);

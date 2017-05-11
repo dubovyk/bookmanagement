@@ -23,7 +23,7 @@ public class ListCommandProcessor extends CommandProcessorImp {
     }
 
     @Override
-    public void process(String inputCommand){
+    public void handleMessage(String inputCommand){
         List<String> com_parts = splitArgs(inputCommand);
         if (com_parts.size() == 1) {
             List<Book> allBooks = bookService.findAll();

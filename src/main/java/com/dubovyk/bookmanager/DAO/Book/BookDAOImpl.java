@@ -33,7 +33,7 @@ public class BookDAOImpl extends GenericDAOImpl<Book, Long> implements BookDAO {
     public List<Book> getAllBooksByName(final String name) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        List<Book> foundBooks = (List<Book>) session.createQuery(String.format("from Book where name is %s", name)).list();
+        List<Book> foundBooks = (List<Book>) session.createQuery(String.format("from Book where book_name = '%s'", name)).list();
         session.close();
         return foundBooks;
     }

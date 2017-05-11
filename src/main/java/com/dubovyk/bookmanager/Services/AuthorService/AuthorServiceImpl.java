@@ -3,7 +3,13 @@ package com.dubovyk.bookmanager.Services.AuthorService;
 import com.dubovyk.bookmanager.DAO.Author.AuthorDAO;
 import com.dubovyk.bookmanager.DAO.Author.AuthorDAOImpl;
 import com.dubovyk.bookmanager.Entities.Author;
+import com.dubovyk.bookmanager.Entities.Book;
 import com.dubovyk.bookmanager.Services.GenericServiceImpl;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * This class implements AuthorService interface and
@@ -27,5 +33,36 @@ public class AuthorServiceImpl extends GenericServiceImpl<Author, Long> implemen
     @Override
     public Author findOneByName(String name){
         return ((AuthorDAO) dao).findByName(name);
+    }
+
+    @Override
+    public Book getBookByNameAndAuthorName(final String book_name, final String author_name){
+        Author author = ((AuthorDAO)dao).findByName(author_name);
+        if (author == null){
+            return null;
+        }
+        for(Book book : author.getBooks()){
+            if(book.getName().equals(book_name)){
+                System.out.println(book_name);
+                return book;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public List<Book> getAllBooksForAuthor(Author author){
+        List<Book> books = author.getBooks();
+        books.sort(Comparator.comparing(o -> o.getName().toLowerCase()));
+        return books;
+    }
+
+    @Override
+    public List<Book> getAllBooksForAuthor(String name){
+        Author author = findOneByName(name);
+        if (author != null){
+            return getAllBooksForAuthor(author);
+        }
+        return new ArrayList<>();
     }
 }

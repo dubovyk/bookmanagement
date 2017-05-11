@@ -104,7 +104,6 @@ public abstract class GenericDAOImpl<T, PK extends Serializable> implements Gene
         Session session = getSession();
         session.beginTransaction();
         session.delete(t);
-        session.flush();
         session.getTransaction().commit();
         session.close();
     }

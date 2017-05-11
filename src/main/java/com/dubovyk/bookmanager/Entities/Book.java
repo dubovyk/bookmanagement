@@ -19,16 +19,16 @@ import javax.persistence.Table;
 @Table(name = "Book")
 public class Book {
     @Id
-    @GeneratedValue(generator = "increment")
-    @GenericGenerator(name = "increment", strategy = "increment")
+    @GeneratedValue
+    //@GenericGenerator(name = "increment", strategy = "increment")
     @Column(name = "book_id")
     private Long id;
 
-    @Column(name = "book_name", length = 250, nullable = false)
+    @Column(name = "book_name", unique = true, length = 250, nullable = false)
     private String Name;
 
     @ManyToOne
-    @Cascade(value = CascadeType.ALL)
+    @Cascade(value = CascadeType.PERSIST)
     @JoinColumn(name ="author_id")
     private Author author;
 
@@ -41,7 +41,7 @@ public class Book {
 
     @Override
     public String toString(){
-        return "\"" + getName() + "\" by " + getAuthor();
+        return "\"" + getName() + "\" by " + getAuthor().getName();
     }
 
     public Long getId() {

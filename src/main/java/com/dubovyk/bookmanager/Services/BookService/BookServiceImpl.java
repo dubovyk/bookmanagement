@@ -8,6 +8,7 @@ import com.dubovyk.bookmanager.Services.AuthorService.AuthorService;
 import com.dubovyk.bookmanager.Services.AuthorService.AuthorServiceImpl;
 import com.dubovyk.bookmanager.Services.GenericServiceImpl;
 
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -53,11 +54,34 @@ public class BookServiceImpl extends GenericServiceImpl<Book, Long> implements B
     }
 
     /**
+     * @param book
+     */
+    @Override
+    public void update(Book book){
+        Author author = authorService.findOneByName(book.getAuthor().getName());
+        if (author == null){
+            authorService.save(book.getAuthor());
+        } else {
+            book.setAuthor(author);
+        }
+        dao.update(book);
+    }
+
+    /**
      * @param name A name of desired books.
      * @return A list of books with given name or an empty list.
      */
     @Override
     public List<Book> findAllByName(String name){
-        return ((BookDAO) dao).getAllBooksByName(name);
+        List<Book> books = ((BookDAO) dao).getAllBooksByName(name);
+        books.sort(Comparator.comparing(o -> o.getName().toLowerCase()));
+        return books;
+    }
+
+    @Override
+    public List<Book> findAll(){
+        List<Book> books = dao.findAll();
+        books.sort(Comparator.comparing(o -> o.getName().toLowerCase()));
+        return books;
     }
 }

@@ -2,6 +2,9 @@ package com.dubovyk.bookmanager.DAO.Author;
 
 import com.dubovyk.bookmanager.DAO.GenericDAO;
 import com.dubovyk.bookmanager.Entities.Author;
+import com.dubovyk.bookmanager.Entities.Book;
+
+import java.util.List;
 
 /**
  * A simple DAO interface for accessing

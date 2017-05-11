@@ -54,6 +54,20 @@ public class BookServiceImpl extends GenericServiceImpl<Book, Long> implements B
     }
 
     /**
+     * @param book
+     */
+    @Override
+    public void update(Book book){
+        Author author = authorService.findOneByName(book.getAuthor().getName());
+        if (author == null){
+            authorService.save(book.getAuthor());
+        } else {
+            book.setAuthor(author);
+        }
+        dao.update(book);
+    }
+
+    /**
      * @param name A name of desired books.
      * @return A list of books with given name or an empty list.
      */

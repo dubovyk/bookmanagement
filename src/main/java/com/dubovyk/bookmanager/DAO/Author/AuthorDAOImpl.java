@@ -2,8 +2,10 @@ package com.dubovyk.bookmanager.DAO.Author;
 
 import com.dubovyk.bookmanager.DAO.GenericDAOImpl;
 import com.dubovyk.bookmanager.Entities.Author;
+import com.dubovyk.bookmanager.Entities.Book;
 import org.hibernate.Session;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,6 +22,7 @@ public class AuthorDAOImpl extends GenericDAOImpl<Author, Long> implements Autho
      * @param name Authors name to be found.
      * @return If there`s such author in db, it`s returned, else null is returned.
      */
+    @Override
     public Author findByName(String name){
         Session session = this.getSession();
         session.beginTransaction();

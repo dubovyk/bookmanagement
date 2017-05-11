@@ -4,6 +4,14 @@ import com.dubovyk.bookmanager.Controllers.Command.CommandProcessor;
 import com.dubovyk.bookmanager.Controllers.Command.CommandProcessorImp;
 
 /**
+ * This class is a main entry point of the command processing.
+ *
+ * It is used as a manager of the responsibility chain
+ * built of CommandProcessors.
+ *
+ * @see CommandProcessorImp
+ * @see CommandProcessor
+ *
  * @author Sergey Dubovyk aka knidarkness
  * @version 1.0
  */
@@ -27,6 +35,5 @@ public class ChatController {
 
     public void registerProcessor(CommandProcessor processor){
         firstChain.registerNext(processor);
-        System.out.println("REGISTERED");
     }
 }

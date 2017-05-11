@@ -4,6 +4,8 @@ This is a simple book management system, which uses Hibernate in its data layer.
 
 ## Installation
 
+Required Java target version for this project is 1.6+.
+
 To run this project you should simply clone the repository and build it with maven. Besides that you will need to modify hibernate.cfg.xml -- set your database server setting in the hibernate.connection group.
 After this, you are ready to run the project.
 

@@ -24,7 +24,7 @@ public class Book {
     @Column(name = "book_id")
     private Long id;
 
-    @Column(name = "book_name", length = 250, nullable = false)
+    @Column(name = "book_name", unique = true, length = 250, nullable = false)
     private String Name;
 
     @ManyToOne
@@ -41,7 +41,7 @@ public class Book {
 
     @Override
     public String toString(){
-        return "\"" + getName() + "\" by " + getAuthor();
+        return "\"" + getName() + "\" by " + getAuthor().getName();
     }
 
     public Long getId() {

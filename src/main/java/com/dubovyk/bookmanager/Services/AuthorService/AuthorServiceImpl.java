@@ -3,6 +3,7 @@ package com.dubovyk.bookmanager.Services.AuthorService;
 import com.dubovyk.bookmanager.DAO.Author.AuthorDAO;
 import com.dubovyk.bookmanager.DAO.Author.AuthorDAOImpl;
 import com.dubovyk.bookmanager.Entities.Author;
+import com.dubovyk.bookmanager.Entities.Book;
 import com.dubovyk.bookmanager.Services.GenericServiceImpl;
 
 /**
@@ -27,5 +28,20 @@ public class AuthorServiceImpl extends GenericServiceImpl<Author, Long> implemen
     @Override
     public Author findOneByName(String name){
         return ((AuthorDAO) dao).findByName(name);
+    }
+
+    @Override
+    public Book getBookByNameAndAuthorName(final String book_name, final String author_name){
+        Author author = ((AuthorDAO)dao).findByName(author_name);
+        if (author == null){
+            return null;
+        }
+        for(Book book : author.getBooks()){
+            if(book.getName().equals(book_name)){
+                System.out.println(book_name);
+                return book;
+            }
+        }
+        return null;
     }
 }

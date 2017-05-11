@@ -7,6 +7,7 @@ import com.dubovyk.bookmanager.Entities.Book;
 import com.dubovyk.bookmanager.Services.GenericServiceImpl;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -51,7 +52,9 @@ public class AuthorServiceImpl extends GenericServiceImpl<Author, Long> implemen
 
     @Override
     public List<Book> getAllBooksForAuthor(Author author){
-        return author.getBooks();
+        List<Book> books = author.getBooks();
+        books.sort(Comparator.comparing(o -> o.getName().toLowerCase()));
+        return books;
     }
 
     @Override

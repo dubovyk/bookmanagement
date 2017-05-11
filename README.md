@@ -1,4 +1,4 @@
-# Book manager for BotsCrew
+# Book manager
 
 This is a simple book management system, which uses Hibernate in its data layer.
 

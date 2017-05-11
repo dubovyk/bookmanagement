@@ -18,6 +18,7 @@ public class EditCommandProcessor extends CommandProcessorImp {
 
     public EditCommandProcessor(){
         this.pattern = "edit(.)*";
+        this.badFormat = "You entered a command in a wrong way. It should look like 'edit book_name'";
     }
 
     @Override

@@ -19,14 +19,12 @@ public class RemoveCommandProcessor extends CommandProcessorImp{
 
     public RemoveCommandProcessor(){
         this.pattern = "remove(.)*";
+        this.badFormat = "You`ve entered a command in with wrong formatting. It should look like 'remove book_name'";
     }
 
     @Override
     public void handleMessage(String inputCommand){
         List<String> parts = splitArgs(inputCommand);
-        if (parts.size() == 1){
-            System.out.println(badFormat);
-        }
         if(parts.size() == 2){
             List<Book> books = bookService.findAllByName(parts.get(1).trim());
             if (books.size() == 0){

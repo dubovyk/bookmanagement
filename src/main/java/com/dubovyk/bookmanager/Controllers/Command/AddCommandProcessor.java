@@ -30,6 +30,7 @@ public class AddCommandProcessor extends CommandProcessorImp {
 
     public AddCommandProcessor(){
         this.pattern = "add(.)*";
+        this.badFormat = "You`ve entered a command in a wrong way. It should look like 'add author_name book_name'";
     }
 
     @Override
@@ -38,7 +39,7 @@ public class AddCommandProcessor extends CommandProcessorImp {
 
         if (parts.size() != 3){
             //TODO: add good help message
-            System.out.println("You`ve entered a command in a wrong way");
+            System.out.println(badFormat);
             return;
         }
 

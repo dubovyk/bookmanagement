@@ -1,6 +1,6 @@
 # Book manager
 
-This is a simple book management system, which uses Hibernate in its data layer.
+This is a simple book management system, which uses Hibernate (as Spring or something similar looks like a massive overhead for this purpose) in its data layer.
 
 ## Installation
 

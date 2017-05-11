@@ -19,8 +19,8 @@ import javax.persistence.Table;
 @Table(name = "Book")
 public class Book {
     @Id
-    @GeneratedValue(generator = "increment")
-    @GenericGenerator(name = "increment", strategy = "increment")
+    @GeneratedValue
+    //@GenericGenerator(name = "increment", strategy = "increment")
     @Column(name = "book_id")
     private Long id;
 
@@ -28,7 +28,7 @@ public class Book {
     private String Name;
 
     @ManyToOne
-    @Cascade(value = CascadeType.ALL)
+    @Cascade(value = CascadeType.PERSIST)
     @JoinColumn(name ="author_id")
     private Author author;
 

@@ -20,10 +20,11 @@ public class ListCommandProcessor extends CommandProcessorImp {
 
     public ListCommandProcessor(){
         this.pattern = "list(.)*";
+        this.badFormat = "You`ve entered a command in with wrong formatting. It should look like 'list' or 'list author_name'";
     }
 
     @Override
-    public void process(String inputCommand){
+    public void handleMessage(String inputCommand){
         List<String> com_parts = splitArgs(inputCommand);
         if (com_parts.size() == 1) {
             List<Book> allBooks = bookService.findAll();
@@ -46,6 +47,8 @@ public class ListCommandProcessor extends CommandProcessorImp {
             } else {
                 System.out.println("Sorry, but as for now we have no books for this author. Just a great time to add some!");
             }
+        } else {
+            System.out.println(badFormat);
         }
     }
 }

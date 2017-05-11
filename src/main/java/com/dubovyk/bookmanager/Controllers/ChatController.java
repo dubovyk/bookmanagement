@@ -28,8 +28,10 @@ public class ChatController {
 
     public void run(){
         String newCommand;
+        System.out.println("Enter your command, please. Use 'exit' to stop. Other commands are 'list', 'add', 'remove', 'edit'.");
         while (!(newCommand = System.console().readLine()).equals("exit")){
             firstChain.process(newCommand);
+            System.out.println("Enter your command, please. Use 'exit' to stop. Other commands are 'list', 'add', 'remove', 'edit'.");
         }
     }
 

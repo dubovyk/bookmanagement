@@ -1,6 +1,5 @@
 package com.dubovyk.bookmanager.Controllers.Command;
 
-import com.dubovyk.bookmanager.Entities.Author;
 import com.dubovyk.bookmanager.Entities.Book;
 import com.dubovyk.bookmanager.Services.AuthorService.AuthorService;
 import com.dubovyk.bookmanager.Services.AuthorService.AuthorServiceImpl;
@@ -105,7 +104,7 @@ public class CommandProcessorImp implements CommandProcessor {
         Matcher matcher = pattern.matcher(input);
         List<String> parts = new ArrayList<>();
         while (matcher.find()){
-            parts.add(matcher.group(0));
+            parts.add(matcher.group(0).replaceAll("[\"']", "").trim());
         }
         return parts;
     }
@@ -135,5 +134,37 @@ public class CommandProcessorImp implements CommandProcessor {
             return -1;
         }
         return bookNum;
+    }
+
+    public String getPattern() {
+        return pattern;
+    }
+
+    public void setPattern(String pattern) {
+        this.pattern = pattern;
+    }
+
+    public String getErrorText() {
+        return errorText;
+    }
+
+    public void setErrorText(String errorText) {
+        this.errorText = errorText;
+    }
+
+    public String getBadFormat() {
+        return badFormat;
+    }
+
+    public void setBadFormat(String badFormat) {
+        this.badFormat = badFormat;
+    }
+
+    public String getSplittingPattern() {
+        return splittingPattern;
+    }
+
+    public void setSplittingPattern(String splittingPattern) {
+        this.splittingPattern = splittingPattern;
     }
 }

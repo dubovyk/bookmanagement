@@ -6,6 +6,10 @@ import com.dubovyk.bookmanager.Entities.Author;
 import com.dubovyk.bookmanager.Entities.Book;
 import com.dubovyk.bookmanager.Services.GenericServiceImpl;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Pattern;
+
 /**
  * This class implements AuthorService interface and
  * used to provide logic to operate with Author table.
@@ -43,5 +47,19 @@ public class AuthorServiceImpl extends GenericServiceImpl<Author, Long> implemen
             }
         }
         return null;
+    }
+
+    @Override
+    public List<Book> getAllBooksForAuthor(Author author){
+        return author.getBooks();
+    }
+
+    @Override
+    public List<Book> getAllBooksForAuthor(String name){
+        Author author = findOneByName(name);
+        if (author != null){
+            return getAllBooksForAuthor(author);
+        }
+        return new ArrayList<>();
     }
 }

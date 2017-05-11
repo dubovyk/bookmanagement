@@ -4,6 +4,8 @@ import com.dubovyk.bookmanager.Entities.Author;
 import com.dubovyk.bookmanager.Entities.Book;
 import com.dubovyk.bookmanager.Services.GenericService;
 
+import java.util.List;
+
 /**
  * This is an interface for Author services.
  *
@@ -20,5 +22,7 @@ public interface AuthorService extends GenericService<Author, Long>{
      * @return Author object if exists or null.
      */
     Author findOneByName(String name);
+    List<Book> getAllBooksForAuthor(String name);
+    List<Book> getAllBooksForAuthor(Author author);
     Book getBookByNameAndAuthorName(final String book_name, final String author_name);
 }
